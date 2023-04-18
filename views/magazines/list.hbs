@@ -1,0 +1,14 @@
+<h2>Magazine list</h2>
+<ul>
+    {{#each magazineList}}
+        <li>
+            {{this.magazineNumber}} {{this.model}}
+        </li>
+    {{/each}}
+</ul>
+
+<h2>Add magazine to list</h2>
+<form action="">
+    <label>Magazine (nr-value)<input type="text"></label>
+    <button>Add</button>
+</form>

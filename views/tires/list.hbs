@@ -1,0 +1,25 @@
+<h2>Tire list</h2>
+<ul>
+{{#each tiresList}}
+    <li>
+        <label>
+            {{this.brand}} ({{this.count}}.pcs)
+            <select>
+                <option value="">-</option>
+                {{#each ../magazinesList}}
+                    <option value="{{this.magazineNumber}}">{{this.magazineNumber}}</option>
+                {{/each}}
+            </select>
+        </label>
+        <button>Save</button>
+    </li>
+{{/each}}
+</ul>
+
+
+<h2>Add tire to list</h2>
+<form action="">
+    <label>Full model (brand, model, size)<input name="brand" type="text"></label>
+    <label>Amount (pcs)<input name="count" type="number"></label>
+    <button>Add</button>
+</form>
