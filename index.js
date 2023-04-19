@@ -7,6 +7,7 @@ const {homeRouter} = require("./routers/home");
 const {tireRouter} = require("./routers/tire");
 const {magazineRouter} = require("./routers/magazine");
 require('./utils/db');
+const {handlebarsHelpers} = require("./utils/handlebars-helpers");
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(express.json());
 
 app.engine('.hbs', hbs.engine({
     extname:'.hbs',
-    // helpers: handlebarsHelpers,
+    helpers: handlebarsHelpers,
 }));
 app.set('view engine', '.hbs');
 

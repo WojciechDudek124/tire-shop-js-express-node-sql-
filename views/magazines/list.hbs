@@ -2,7 +2,15 @@
 <ul>
     {{#each magazineList}}
         <li>
-            Magazine nr {{this.number}}. {{this.model}}
+            Magazine nr {{this.number}}.
+            <select>
+                <option value="">brak </option>
+                {{#each ../tiresList}}
+                <option value="{{this.id}}" {{#if (equals this.id  ../tireId)}}selected="selected"{{/if}}>
+                    {{this.name}}
+                </option>
+                {{/each}}
+            </select>
         </li>
     {{/each}}
 </ul>

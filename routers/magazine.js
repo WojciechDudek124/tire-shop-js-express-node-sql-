@@ -7,7 +7,7 @@ const magazineRouter = Router();
 magazineRouter
     .get('/', async (req,res) =>{
         const magazineList = await MagazineRecord.listAll();
-        const tiresList = TireRecord.listAll();
+        const tiresList = await TireRecord.listAll();
         res.render('magazines/list', {
             magazineList,
             tiresList,
