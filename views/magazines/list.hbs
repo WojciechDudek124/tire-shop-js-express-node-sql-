@@ -2,13 +2,13 @@
 <ul>
     {{#each magazineList}}
         <li>
-            Magazine nr {{this.magazineNumber}}. {{this.model}}
+            Magazine nr {{this.number}}. {{this.model}}
         </li>
     {{/each}}
 </ul>
 
 <h2>Add magazine to list</h2>
-<form action="">
-    <label>Magazine (nr-value)<input type="text"></label>
+<form action="/magazine" method="POST">
+    <label>Magazine number (nr)<input type="number" name="number"></label>
     <button>Add</button>
 </form>

@@ -13,6 +13,20 @@ magazineRouter
             tiresList,
         })
     })
+    .post('/', async (req,res) =>{
+        const data = {
+            ...req.body,
+            number: Number(req.body.number)
+    };
+
+        console.log(data);
+
+        const magazineNumber = new MagazineRecord(data);
+
+        await magazineNumber.insert();
+
+        res.redirect('/magazine');
+    })
 
 module.exports = {
     magazineRouter,

@@ -1,4 +1,5 @@
 const express = require ("express");
+require('express-async-errors')
 const methodOverride = require('method-override');
 const hbs = require('express-handlebars');
 const {handleError} = require("./utils/errors");
