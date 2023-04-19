@@ -3,7 +3,7 @@
 {{#each tiresList}}
     <li>
         <label>
-            {{this.brand}} ({{this.count}}.pcs)
+            {{this.name}} ({{this.count}}.pcs)
             <select>
                 <option value="">-</option>
                 {{#each ../magazinesList}}
@@ -18,8 +18,8 @@
 
 
 <h2>Add tire to list</h2>
-<form action="">
-    <label>Full model (brand, model, size)<input name="brand" type="text"></label>
+<form action="/tire" METHOD="POST">
+    <label>Full model (name, model, size)<input name="name" type="text"></label>
     <label>Amount (pcs)<input name="count" type="number"></label>
     <button>Add</button>
 </form>
