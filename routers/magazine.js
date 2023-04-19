@@ -5,8 +5,8 @@ const {TireRecord} = require("../records/tire.record");
 const magazineRouter = Router();
 
 magazineRouter
-    .get('/', (req,res) =>{
-        const magazineList = MagazineRecord.listAll();
+    .get('/', async (req,res) =>{
+        const magazineList = await MagazineRecord.listAll();
         const tiresList = TireRecord.listAll();
         res.render('magazines/list', {
             magazineList,

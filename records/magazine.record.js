@@ -1,17 +1,9 @@
+const {pool} = require("../utils/db");
+
 class MagazineRecord{
-    static listAll() {
-        return [
-            {
-                id: 'abcd1',
-                magazineNumber: 'nr 1',
-                model: 'Debica frigo 205/16/55',
-            },
-            {
-                id: 'abcde2',
-                magazineNumber: 'nr 2',
-                model: 'Pirelli Xyz 225/17/45',
-            },
-        ];
+    static async listAll() {
+        const [results] = await pool.execute("SELECT * FROM `magazines` ");
+        return results;
     }
 }
 
