@@ -38,6 +38,12 @@ magazineRouter
 
         const tire = req.body.tireId === '' ? null : await TireRecord.getOne(req.body.tireId);
 
+        if (tire) {
+            if(tire.count <= await tire.countGivenTires()) {
+                throw new ValidationError("Not enough pcs!");
+            };
+        }
+
         magazine.tireId = tire?.id ?? null;
 
         await magazine.update();

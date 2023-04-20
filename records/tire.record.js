@@ -42,6 +42,14 @@ class TireRecord {
 
         return results.length === 0 ? null : new TireRecord(results[0]);
     }
+
+    async countGivenTires(){
+        const [[{count}]] = await pool.execute("SELECT COUNT (*) AS `count` FROM `magazines` WHERE `tireId` = :id",{
+            id: this.id,
+        })
+
+        return count;
+    }
 }
 
 module.exports = {
