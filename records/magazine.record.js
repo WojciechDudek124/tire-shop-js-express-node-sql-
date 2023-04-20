@@ -10,6 +10,7 @@ class MagazineRecord{
 
         this.id = obj.id;
         this.number = obj.number;
+        this.tireId = obj.tireId;
     }
 
     async insert() {
@@ -27,7 +28,23 @@ class MagazineRecord{
 
     static async listAll() {
         const [results] = await pool.execute("SELECT * FROM `magazines` ORDER BY `number` ASC");
-        return results;
+        return results.map(obj => new MagazineRecord(obj));
+    }
+
+    static async getOne(id) {
+        const [results] = await pool.execute("SELECT * FROM `magazines` WHERE `id` = :id", {
+            id,
+        });
+
+        return results.length === 0 ? null : new MagazineRecord(results[0]);
+    }
+
+    async update() {
+        await pool.execute("UPDATE `magazines` SET `number` = :number, `tireId` = :tireId WHERE `id` = :id", {
+            id: this.id,
+            number: this.number,
+            tireId: this.tireId,
+        })
     }
 }
 

@@ -32,7 +32,15 @@ class TireRecord {
 
     static async listAll() {
         const [results] = await pool.execute("SELECT * FROM `tires` ORDER BY `name` ASC");
-        return results;
+        return results.map(obj => new TireRecord(obj));
+    }
+
+    static async getOne(id) {
+        const [results] = await pool.execute("SELECT * FROM `tires` WHERE `id` = :id", {
+            id,
+        });
+
+        return results.length === 0 ? null : new TireRecord(results[0]);
     }
 }
 
